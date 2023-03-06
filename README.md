@@ -2,8 +2,8 @@
 
 Team:
 
-- Danny Mitchell - Sales Microservice
-- Sirasit Punnanithi - Service Microservice
+- Daniel Mitchell - Sales Microservice
+- Sirasit Punnanith - Service Microservice
 
 ## Design
 
