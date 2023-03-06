@@ -2,8 +2,8 @@
 
 Team:
 
-* Person 1 - Which microservice?
-* Person 2 - Which microservice?
+- Danny Mitchell - Sales Microservice
+- Sirasit Punnanithi - Service Microservice
 
 ## Design
 
