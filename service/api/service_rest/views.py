@@ -25,8 +25,8 @@ class AppointmentListEncoder(ModelEncoder):
         "id",
         "vin",
         "customer_name",
-        # "date",
-        # "time",
+        "date",
+        "time",
         "reason",
         "is_finished",
         "is_vip",
@@ -41,8 +41,8 @@ class AppointmentDetailEncoder(ModelEncoder):
     properties = [
         "vin",
         "customer_name",
-        # "date",
-        # "time",
+        "date",
+        "time",
         "reason",
         "is_finished",
         "is_vip",
@@ -91,7 +91,7 @@ def api_show_appointment(request, id):
             encoder=AppointmentDetailEncoder,
             safe=False,
         )
-    if request.method == "DELETE":
+    elif request.method == "DELETE":
         try:
             appointment = Appointment.objects.get(id=id)
             appointment.delete()
@@ -102,7 +102,16 @@ def api_show_appointment(request, id):
             )
         except Appointment.DoesNotExist:
             return JsonResponse({"message": "Does not exist"})
+    else:
+        content = json.loads(request.body)
 
+        Appointment.objects.filter(id=id).update(**content)
+        appointment = Appointment.objects.get(id=id)
+        return JsonResponse(
+            appointment,
+            encoder=AppointmentDetailEncoder,
+            safe=False,
+        )
 
 @require_http_methods(["GET", "POST"])
 def api_list_technicians(request):
