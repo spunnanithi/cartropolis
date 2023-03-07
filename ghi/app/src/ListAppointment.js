@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const ListAppointment = () => {
 	const [appointments, setAppointments] = useState([]);
@@ -11,10 +12,34 @@ const ListAppointment = () => {
 		if (response.ok) {
 			const data = await response.json();
 			setAppointments(data.appointments);
-			console.log(data.appointments);
+			// console.log(data.appointments);
 		} else {
 			console.error(response);
 		}
+	};
+
+	const mountAutomobiles = async () => {
+		const automobileUrl = "http://localhost:8080/api/automobiles/";
+		const response = await fetch(automobileUrl);
+
+		if (response.ok) {
+			const data = await response.json();
+			const automobile = data.autos.map((automobile) => {
+				const automobile_vin = automobile.import_vin.slice(17, 34);
+				return { ...automobile, vin: automobile_vin };
+			});
+			setAutomobiles(automobile);
+		} else {
+			console.log(response);
+		}
+	};
+
+	const automobile_vin = automobiles.map((automobile) => {
+		return automobile.vin;
+	});
+
+	const isCustomerVIP = (appointment_vin) => {
+		return automobile_vin.includes(appointment_vin);
 	};
 
 	const updateAppointmentStatus = async (id, is_finished) => {
@@ -52,11 +77,15 @@ const ListAppointment = () => {
 
 	useEffect(() => {
 		mountAppointments();
+		mountAutomobiles();
 	}, []);
 
 	return (
 		<div className="container">
-			<h1>Service Appointments</h1>
+			<h1 className="mt-3 mb-3">Service Appointments</h1>
+			<NavLink className="nav-link mb-3" aria-current="page" to="new">
+				<button className="btn btn-primary">Create a new appointment</button>
+			</NavLink>
 			<table className="table table-striped">
 				<thead>
 					<tr>
@@ -72,6 +101,7 @@ const ListAppointment = () => {
 				</thead>
 				<tbody>
 					{appointments.map((appointment) => {
+						// Formatting Time
 						const formattedTime = appointment.time.substring(0, 5);
 						let is_day = "AM";
 						if (formattedTime.slice(0, 2) >= 12) {
@@ -80,7 +110,26 @@ const ListAppointment = () => {
 						if (!appointment.is_finished) {
 							return (
 								<tr key={appointment.id}>
-									<td>VIP?</td>
+									<td>
+										{" "}
+										{isCustomerVIP(appointment.vin) ? (
+											<img
+												style={{
+													height: "30px",
+													width: "30px",
+												}}
+												src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Star_icon_stylized.svg/2153px-Star_icon_stylized.svg.png"
+												alt="star-icon"></img>
+										) : (
+											<img
+												style={{
+													height: "30px",
+													width: "30px",
+												}}
+												src="https://icons.iconarchive.com/icons/google/noto-emoji-smileys/512/10058-crying-face-icon.png"
+												alt="crying-face"></img>
+										)}{" "}
+									</td>
 									<td>{appointment.vin}</td>
 									<td>{appointment.customer_name}</td>
 									<td>{appointment.date}</td>
