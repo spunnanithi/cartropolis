@@ -58,8 +58,8 @@ def salesrep_list(request):
     if request.method == "GET":
         salesrep = SalesRep.objects.all()
         return JsonResponse(
-             {"salesrep" : salesrep},
-                    encoder=SalesRepEncoder,
+            {"salesrep" : salesrep},
+            encoder=SalesRepEncoder,
         )
 
     else:
@@ -113,52 +113,8 @@ def customer_detail(request, id):
 
 
 @require_http_methods(["GET", "POST"])
-# def sale_list(request):
-#     if request.method == "GET":
-#         sales = SaleRecord.objects.all()
-#         return JsonResponse(
-#             {"sales": sales},
-#             encoder=SaleRecordEncoder,
-#             )
-#     else:
-#         content = json.loads(request.body)
-#         try:
-#             automobile = AutomobileVO.objects.get(vin=content["automobile"])
-#             content["automobile"] = automobile
-#         except AutomobileVO.DoesNotExist:
-#             return JsonResponse(
-#                 {"error": "automobile not found"},
-#                 status=404,
-#                 )
-#         try:
-#             customer = Customer.objects.get(name=content["customer"])
-#             content["customer"] = customer
-#         except CustomerEncoder.DoesNotExist:
-#             return JsonResponse(
-#                 {"error": "customer not found"},
-#                 status=404,
-#                 )
-#         try:
-#             salesrep = SalesRep.objects.get(employee_id=content["sales_rep"])
-#             content["sales_rep"] = salesrep
-#         except SalesRepEncoder.DoesNotExist:
-#             return JsonResponse(
-#                 {"error": "sales rep not found"},
-#                 status=404,
-#                 )
-
-#         sale = SaleRecord.objects.create(**content)
-#         return JsonResponse(
-#             sale,
-#             encoder=SaleRecordEncoder,
-#             safe=False,
-#     )
-
-
-
 def sale_list(request):
     if request.method == "GET":
-
         sales = SaleRecord.objects.all()
         return JsonResponse(
             {"sales": sales},
@@ -167,14 +123,22 @@ def sale_list(request):
         )
     else:
         content = json.loads(request.body)
-
-        content["customer"] = Customer.objects.get(name=content["customer"])
-
-        content["sales_rep"] = SalesRep.objects.get(employee_id=content["sales_rep"])
         try:
-
+            content["customer"] = Customer.objects.get(name=content["customer"])
+        except CustomerEncoder.DoesNotExist:
+            return JsonResponse(
+                {"error": "customer not found"},
+                status=404,
+                )
+        try:
+            content["sales_rep"] = SalesRep.objects.get(employee_id=content["sales_rep"])
+        except SalesRepEncoder.DoesNotExist:
+            return JsonResponse(
+                {"error": "sales rep not found"},
+                status=404,
+                )
+        try:
             content["automobile"] = AutomobileVO.objects.get(vin=content["automobile"])
-
         except AutomobileVO.DoesNotExist:
             response = JsonResponse(
                 {"message": "Could not locate automobile"}
@@ -183,6 +147,11 @@ def sale_list(request):
             return response
 
         sales = SaleRecord.objects.create(**content)
+        
+        automobile = sales.automobile
+        automobile.sold = True
+        automobile.save()
+
         return JsonResponse(
             {"sales": sales},
             encoder=SaleRecordEncoder,
@@ -203,4 +172,3 @@ def sale_detail(request, id):
         count, _ = SaleRecord.objects.filter(id=id).delete()
         return JsonResponse(
             {"deleted": count > 0})
-            
