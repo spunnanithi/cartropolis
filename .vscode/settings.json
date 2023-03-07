@@ -1,0 +1,8 @@
+{
+    "cSpell.words": [
+        "salesrep"
+    ],
+    "python.analysis.extraPaths": [
+        "./sales/api"
+    ]
+}
