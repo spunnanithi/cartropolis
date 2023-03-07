@@ -137,6 +137,7 @@ def sale_list(request):
                 {"error": "sales rep not found"},
                 status=404,
                 )
+        automobile = None
         try:
             content["automobile"] = AutomobileVO.objects.get(vin=content["automobile"])
         except AutomobileVO.DoesNotExist:
@@ -146,8 +147,15 @@ def sale_list(request):
             response.status_code = 404
             return response
 
+        if content["automobile"].sold:
+            response = JsonResponse(
+                {"message": "This automobile is already sold"}
+            )
+            response.status_code = 404
+            return response
+
         sales = SaleRecord.objects.create(**content)
-        
+
         automobile = sales.automobile
         automobile.sold = True
         automobile.save()
