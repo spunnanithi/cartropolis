@@ -84,7 +84,13 @@ const ListAppointment = () => {
 		<div className="container">
 			<h1 className="mt-3 mb-3">Service Appointments</h1>
 			<NavLink className="nav-link mb-3" aria-current="page" to="new">
-				<button className="btn btn-primary">Create a new appointment</button>
+				<button className="btn btn-primary">Enter a Service Appointment</button>
+			</NavLink>
+			<NavLink
+				className="nav-link mb-3"
+				aria-current="page"
+				to="technicians/new">
+				<button className="btn btn-primary">Enter a Technician</button>
 			</NavLink>
 			<table className="table table-striped">
 				<thead>
@@ -126,8 +132,8 @@ const ListAppointment = () => {
 													height: "30px",
 													width: "30px",
 												}}
-												src="https://icons.iconarchive.com/icons/google/noto-emoji-smileys/512/10058-crying-face-icon.png"
-												alt="crying-face"></img>
+												src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA0L2pvYjcyMi0xMjAtcC5wbmc.png"
+												alt="red-x-mark"></img>
 										)}{" "}
 									</td>
 									<td>{appointment.vin}</td>

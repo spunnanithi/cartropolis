@@ -36,9 +36,7 @@ const CreateAppointment = () => {
 		const appointmentUrl = "http://localhost:8080/api/appointments/";
 
 		const isoDate = `${date}T00:00:00Z`;
-		console.log(isoDate);
 		const isoTime = `2000-10-20T${time}Z`;
-		console.log(isoTime);
 
 		const data = {
 			customer_name: customerName,

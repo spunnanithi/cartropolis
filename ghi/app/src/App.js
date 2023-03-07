@@ -3,6 +3,7 @@ import MainPage from "./MainPage";
 import Nav from "./Nav";
 import ListAppointment from "./ListAppointment";
 import CreateAppointment from "./CreateAppointment";
+import CreateTechnician from "./CreateTechnician";
 
 function App() {
 	return (
@@ -15,6 +16,9 @@ function App() {
 					<Route path="services">
 						<Route path="" element={<ListAppointment />}></Route>
 						<Route path="new" element={<CreateAppointment />}></Route>
+						<Route
+							path="technicians/new"
+							element={<CreateTechnician />}></Route>
 					</Route>
 					<Route path="sales"></Route>
 				</Routes>
