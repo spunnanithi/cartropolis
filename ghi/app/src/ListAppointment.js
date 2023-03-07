@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 const ListAppointment = () => {
 	const [appointments, setAppointments] = useState([]);
+	const [automobiles, setAutomobiles] = useState([]);
 
 	const mountAppointments = async () => {
 		const appointmentUrl = "http://localhost:8080/api/appointments/";
@@ -72,6 +73,10 @@ const ListAppointment = () => {
 				<tbody>
 					{appointments.map((appointment) => {
 						const formattedTime = appointment.time.substring(0, 5);
+						let is_day = "AM";
+						if (formattedTime.slice(0, 2) >= 12) {
+							is_day = "PM";
+						}
 						if (!appointment.is_finished) {
 							return (
 								<tr key={appointment.id}>
@@ -79,7 +84,9 @@ const ListAppointment = () => {
 									<td>{appointment.vin}</td>
 									<td>{appointment.customer_name}</td>
 									<td>{appointment.date}</td>
-									<td>{formattedTime} PM</td>
+									<td>
+										{formattedTime} {is_day}
+									</td>
 									<td>{appointment.technician}</td>
 									<td>{appointment.reason}</td>
 									<td>
