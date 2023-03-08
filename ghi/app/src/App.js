@@ -15,9 +15,8 @@ function App() {
 					<Route path="/" element={<MainPage />} />
 					<Route path="inventory"></Route>
 					<Route path="services">
-						<Route path="" element={<ListAppointment />}>
-							<Route path="" element={<SearchAppointment />}></Route>
-						</Route>
+						<Route path="" element={<ListAppointment />}></Route>
+						<Route path="search" element={<SearchAppointment />}></Route>
 						<Route path="new" element={<CreateAppointment />}></Route>
 						<Route
 							path="technicians/new"
