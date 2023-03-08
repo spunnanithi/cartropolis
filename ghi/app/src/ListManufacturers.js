@@ -1,6 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 
 const ListManufacturers = () => {
+	const [manufacturers, setManufacturers] = useState([]);
+
+	const mountManufacturer = async () => {
+		const manufacturerUrl = "http://localhost:8100/api/manufacturers/";
+
+		const response = await fetch(manufacturerUrl);
+
+		if (response.ok) {
+			const data = await response.json();
+			setManufacturers(data.manufacturers);
+		}
+	};
+
+	useEffect(() => {
+		mountManufacturer();
+	}, []);
 	return (
 		<div className="container">
 			<h1>Manufacturers</h1>
@@ -10,7 +27,15 @@ const ListManufacturers = () => {
 						<th>Name</th>
 					</tr>
 				</thead>
-				<tbody></tbody>
+				<tbody>
+					{manufacturers.map((manufacturer) => {
+						return (
+							<tr key={manufacturer.id}>
+								<td>{manufacturer.name}</td>
+							</tr>
+						);
+					})}
+				</tbody>
 			</table>
 		</div>
 	);
