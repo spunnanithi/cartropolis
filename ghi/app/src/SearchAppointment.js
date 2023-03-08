@@ -46,7 +46,7 @@ const SearchAppointment = () => {
 				<input
 					type="search"
 					className="form-control rounded"
-					placeholder="Search"
+					placeholder="Search for an appointment by VIN"
 					aria-label="Search"
 					aria-describedby="search-addon"
 					onChange={handleSearchBar}
