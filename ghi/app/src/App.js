@@ -9,6 +9,9 @@ import ListManufacturers from "./ListManufacturers";
 import ListVehicleModels from "./ListVehicleModels";
 import ListAutomobiles from "./ListAutomobiles";
 import InventoryPage from "./InventoryPage";
+import CreateManufacturer from "./CreateManufacturer";
+import CreateVehicleModel from "./CreateVehicleModel";
+import CreateAutomobile from "./CreateAutomobile";
 
 function App() {
 	return (
@@ -20,8 +23,15 @@ function App() {
 					<Route path="inventory">
 						<Route path="" element={<InventoryPage />}></Route>
 						<Route path="manufacturers" element={<ListManufacturers />}></Route>
+						<Route
+							path="manufacturers/new"
+							element={<CreateManufacturer />}></Route>
 						<Route path="models" element={<ListVehicleModels />}></Route>
+						<Route path="models/new" element={<CreateVehicleModel />}></Route>
 						<Route path="automobiles" element={<ListAutomobiles />}></Route>
+						<Route
+							path="automobiles/new"
+							element={<CreateAutomobile />}></Route>
 					</Route>
 					<Route path="services">
 						<Route path="" element={<ListAppointment />}></Route>

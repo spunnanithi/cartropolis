@@ -17,6 +17,25 @@ const InventoryPage = () => {
 						<NavLink to="automobiles">Automobiles</NavLink>
 					</div>
 				</div>
+				<div className="row">
+					<div className="col-md">
+						<NavLink to="manufacturers/new">
+							<button className="btn btn-primary">Create a Manufacturer</button>
+						</NavLink>
+					</div>
+					<div className="col-md">
+						<NavLink to="models/new">
+							<button className="btn btn-primary">
+								Create a Vehicle Model
+							</button>
+						</NavLink>
+					</div>
+					<div className="col-md">
+						<NavLink to="automobiles/new">
+							<button className="btn btn-primary">Create a Automobile</button>
+						</NavLink>
+					</div>
+				</div>
 			</div>
 		</>
 	);
