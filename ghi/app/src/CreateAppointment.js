@@ -59,7 +59,6 @@ const CreateAppointment = () => {
 
 		if (response.ok) {
 			const newAppointment = await response.json();
-			console.log(newAppointment);
 
 			setCustomerName("");
 			setVin("");

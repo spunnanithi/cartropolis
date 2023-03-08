@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import SearchAppointment from "./SearchAppointment";
 
 const ListAppointment = () => {
 	const [appointments, setAppointments] = useState([]);
@@ -12,7 +13,6 @@ const ListAppointment = () => {
 		if (response.ok) {
 			const data = await response.json();
 			setAppointments(data.appointments);
-			// console.log(data.appointments);
 		} else {
 			console.error(response);
 		}
@@ -83,15 +83,20 @@ const ListAppointment = () => {
 	return (
 		<div className="container">
 			<h1 className="mt-3 mb-3">Service Appointments</h1>
-			<NavLink className="nav-link mb-3" aria-current="page" to="new">
-				<button className="btn btn-primary">Enter a Service Appointment</button>
-			</NavLink>
-			<NavLink
-				className="nav-link mb-3"
-				aria-current="page"
-				to="technicians/new">
-				<button className="btn btn-primary">Enter a Technician</button>
-			</NavLink>
+			<SearchAppointment appointments={appointments} />
+			<div className="d-flex">
+				<NavLink className="nav-link mb-3" aria-current="page" to="new">
+					<button className="btn btn-primary">
+						Enter a Service Appointment
+					</button>
+				</NavLink>
+				<NavLink
+					className="nav-link mb-3"
+					aria-current="page"
+					to="technicians/new">
+					<button className="btn btn-primary">Enter a Technician</button>
+				</NavLink>
+			</div>
 			<table className="table table-striped">
 				<thead>
 					<tr>
