@@ -25,7 +25,7 @@ function Nav() {
 							</NavLink>
 						</li>
 						<li className="nav-item">
-							<NavLink className="nav-link" aria-current="page" to="/">
+							<NavLink className="nav-link" aria-current="page" to="inventory">
 								Inventory
 							</NavLink>
 						</li>

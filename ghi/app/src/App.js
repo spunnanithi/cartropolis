@@ -5,6 +5,10 @@ import ListAppointment from "./ListAppointment";
 import CreateAppointment from "./CreateAppointment";
 import CreateTechnician from "./CreateTechnician";
 import SearchAppointment from "./SearchAppointment";
+import ListManufacturers from "./ListManufacturers";
+import ListVehicleModels from "./ListVehicleModels";
+import ListAutomobiles from "./ListAutomobiles";
+import InventoryPage from "./InventoryPage";
 
 function App() {
 	return (
@@ -13,7 +17,12 @@ function App() {
 			<div className="container">
 				<Routes>
 					<Route path="/" element={<MainPage />} />
-					<Route path="inventory"></Route>
+					<Route path="inventory">
+						<Route path="" element={<InventoryPage />}></Route>
+						<Route path="manufacturers" element={<ListManufacturers />}></Route>
+						<Route path="models" element={<ListVehicleModels />}></Route>
+						<Route path="automobiles" element={<ListAutomobiles />}></Route>
+					</Route>
 					<Route path="services">
 						<Route path="" element={<ListAppointment />}></Route>
 						<Route path="search" element={<SearchAppointment />}></Route>
