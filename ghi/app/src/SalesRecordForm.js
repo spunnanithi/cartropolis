@@ -90,6 +90,8 @@ return (
         <div className="row">
             <div className="col-md-12">
                 <h1 className="text-center">Sales Record Form</h1>
+                <div className="card mx-auto" style={{ width: "60%" }}>
+                    <div className="card-body">
             <form onSubmit={handleSubmit}>
             <div className="form-group">
                 <label htmlFor="car">Car</label>
@@ -169,6 +171,8 @@ return (
                 Submit
             </button>
             </form>
+            </div>
+            </div>
             </div>
         </div>
     </div>

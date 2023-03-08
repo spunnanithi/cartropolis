@@ -48,22 +48,47 @@ return (
     <div className="container">
         <div className="row">
             <div className="col-md-12">
-                <h1>Add Customer</h1>
+                <h1 className="text-center"> Add Customer</h1>
+                <div className="card mx-auto" style={{ width: "50%" }}>
+                    <div className="card-body">
                 <form onSubmit={handleSubmit} id="Create-Customer-Form">
                     <div className="form-floating mb-3">
-                        <input  placeholder="Name" type="text" value={name} onChange={handleNameChange} name="name" id="name" className="form-control" />
+                        <input
+                        placeholder="Name"
+                        type="text"
+                        value={name}
+                        onChange={handleNameChange}
+                        name="name"
+                        id="name"
+                        className="form-control" />
                         <label htmlFor="name">Name</label>
                     </div>
                     <div className="form-floating mb-3">
-                        <input placeholder="Address" type="text" value={address} onChange={handleAddressChange} name="address" id="address" className="form-control" />
+                        <input
+                        placeholder="Address"
+                        type="text"
+                        value={address}
+                        onChange={handleAddressChange}
+                        name="address"
+                        id="address"
+                        className="form-control" />
                         <label htmlFor="address">Address</label>
                     </div>
                     <div className="form-floating mb-3">
-                        <input placeholder="Phone" type="text" value={phone} onChange={handlePhoneChange} name="phone" id="phone" className="form-control" />
+                        <input
+                        placeholder="Phone"
+                        type="text"
+                        value={phone}
+                        onChange={handlePhoneChange}
+                        name="phone"
+                        id="phone"
+                        className="form-control" />
                         <label htmlFor="phone">Phone</label>
                     </div>
                     <button className="btn btn-primary">Submit</button>
                 </form>
+                </div>
+                </div>
             </div>
         </div>
     </div>

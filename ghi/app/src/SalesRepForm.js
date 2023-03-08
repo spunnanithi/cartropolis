@@ -41,19 +41,38 @@ return (
     <div className="container">
         <div className="row">
             <div className="col-md-12">
-                <h1>Add Sales Rep</h1>
+                <h1 className="text-center"> Add Sales Rep</h1>
+                <div className="card mx-auto" style={{ width: "50%" }}>
+                    <div className="card-body">
                 <form onSubmit={handleSubmit} id="Create-Sales-Rep-Form">
                     <div className="form-floating mb-3">
-                        <input  placeholder="Name" type="text" value={name} onChange={handleNameChange} name="name"
-                        id="name" className="form-control" />
+                        <input
+                        placeholder="Name"
+                        type="text"
+                        value={name}
+                        onChange={handleNameChange}
+                        name="name"
+                        id="name"
+                        className="form-control"
+                        />
                         <label htmlFor="name">Name</label>
                     </div>
                     <div className="form-floating mb-3">
-                        <input placeholder="Employee ID" type="text" value={employee_id} onChange={handleEmployeeIdChange} name="employee_id" id="employee_id" className="form-control" />
+                        <input
+                        placeholder="Employee ID"
+                        type="text"
+                        value={employee_id}
+                        onChange={handleEmployeeIdChange}
+                        name="employee_id"
+                        id="employee_id"
+                        className="form-control"
+                        />
                         <label htmlFor="employee_id">Employee ID</label>
                     </div>
                     <button className="btn btn-primary">Submit</button>
                 </form>
+                </div>
+                </div>
             </div>
         </div>
     </div>
