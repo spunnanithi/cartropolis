@@ -71,6 +71,7 @@ function SalesRepHistory() {
             </thead>
             <tbody>
               {sales.map( sale => {
+                if (sale.sales_rep.id == salesRepId)
                 return (
                   <tr key={sale.id}>
                     <td>{sale.sales_rep.name}</td>

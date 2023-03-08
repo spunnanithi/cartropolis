@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 
 function SalesRecordForm() {
-    const [cars, setCars] = useState([]);
+    const [automobiles, setAutomobiles] = useState([]);
     const [salesReps, setSalesReps] = useState([]);
     const [customers, setCustomers] = useState([]);
-    const [car, setCar] = useState("");
+    const [automobile, setAutomobile] = useState("");
     const [customer, setCustomer] = useState("");
     const [salesRep, setSalesRep] = useState("");
     const [price, setPrice] = useState("");
 
-    const handleCarChange = (event) => {
-    setCar(event.target.value);
+    const handleAutomobileChange = (event) => {
+    setAutomobile(event.target.value);
     };
 
     const handlePriceChange = (event) => {
@@ -25,18 +25,20 @@ function SalesRecordForm() {
     setSalesRep(event.target.value);
     };
 
-    const fetchCars = async () => {
+    const fetchAutomobile = async () => {
     const url = "http://localhost:8100/api/automobiles/";
     const response = await fetch(url);
     const data = await response.json();
-    setCars(data.autos);
+    setAutomobile(data.automobile);
+    console.log(data)
     };
 
-    const fetchCar = async () => {
+    const fetchAutomobiles = async () => {
     const url = "http://localhost:8090/api/automobile/";
     const response = await fetch(url);
     const data = await response.json();
-    setCar(data.automobile);
+    setAutomobiles(data.automobiles);
+    console.log(data)
     };
 
     const fetchSalesReps = async () => {
@@ -54,16 +56,16 @@ function SalesRecordForm() {
     };
 
     useEffect(() => {
-    fetchCars();
+    fetchAutomobiles();
     fetchSalesReps();
     fetchCustomers();
-    fetchCar();
+    fetchAutomobile();
     }, []);
 
     const handleSubmit = async (event) => {
     event.preventDefault();
     const data = {
-        automobile: car,
+        automobile: automobile,
         price: price,
         customer: customer,
         sales_rep: salesRep,
@@ -78,7 +80,7 @@ function SalesRecordForm() {
     };
     const response = await fetch(url, fetchConfig);
     if (response.ok) {
-        setCar("");
+        setAutomobile("");
         setPrice("");
         setCustomer("");
         setSalesRep("");
@@ -94,21 +96,22 @@ return (
                     <div className="card-body">
             <form onSubmit={handleSubmit}>
             <div className="form-group">
-                <label htmlFor="car">Car</label>
+                <label htmlFor="car">Automobile</label>
                 <select
                 type="text"
                 className="form-control"
                 id="automobile"
                 placeholder="Enter car"
-                value={car}
-                onChange={handleCarChange}
+                value={automobile}
+                onChange={handleAutomobileChange}
                 name="automobile"
                 >
-                <option value="">Choose A Car</option>
-                {cars.map(car => {
+                <option value="">Choose A Automobile</option>
+                {automobiles.map(automobile => {
+                    if (automobile.sold === false)
                     return (
-                    <option value={car.vin} key={car.vin}>
-                    {car.model.name}
+                    <option value={automobile.vin} key={automobile.vin}>
+                    {automobile.vin}
                     </option>
                     )
                     })}

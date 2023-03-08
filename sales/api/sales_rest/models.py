@@ -45,6 +45,6 @@ class SaleRecord(models.Model):
         related_name = "sales",
         on_delete=models.CASCADE
         )
-    price = models.PositiveSmallIntegerField()
+    price = models.IntegerField(default=0)
 
 
