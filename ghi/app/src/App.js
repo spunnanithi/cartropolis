@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "./MainPage";
 import Nav from "./Nav";
 import ListAppointment from "./ListAppointment";
+import SalesList from "./SalesList";
+import SalesRecordForm from "./SalesRecordForm";
 
 function App() {
 	return (
@@ -14,7 +16,12 @@ function App() {
 					<Route path="services">
 						<Route path="" element={<ListAppointment />}></Route>
 					</Route>
-					<Route path="sales"></Route>
+					<Route path="sales">
+						<Route path="" element={<SalesList sale={PaymentResponse.sale} />} />
+					</Route>
+					<Route path="sales">
+						<Route path="new" element={<SalesRecordForm />} />
+					</Route>
 				</Routes>
 			</div>
 		</BrowserRouter>

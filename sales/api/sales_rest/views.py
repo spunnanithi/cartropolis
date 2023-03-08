@@ -3,6 +3,7 @@ from django.views.decorators.http import require_http_methods
 from .models import SaleRecord, AutomobileVO, Customer, SalesRep
 from django.http import JsonResponse
 import json
+from django.core.exceptions import ObjectDoesNotExist
 
 
 class AutomobileVOEncoder(ModelEncoder):
@@ -123,20 +124,11 @@ def sale_list(request):
         )
     else:
         content = json.loads(request.body)
-        try:
-            content["customer"] = Customer.objects.get(name=content["customer"])
-        except CustomerEncoder.DoesNotExist:
-            return JsonResponse(
-                {"error": "customer not found"},
-                status=404,
-                )
-        try:
-            content["sales_rep"] = SalesRep.objects.get(employee_id=content["sales_rep"])
-        except SalesRepEncoder.DoesNotExist:
-            return JsonResponse(
-                {"error": "sales rep not found"},
-                status=404,
-                )
+
+        content["customer"] = Customer.objects.get(name=content["customer"])
+
+        content["sales_rep"] = SalesRep.objects.get(employee_id=content["sales_rep"])
+
         automobile = None
         try:
             content["automobile"] = AutomobileVO.objects.get(vin=content["automobile"])
@@ -167,6 +159,24 @@ def sale_list(request):
         )
 
 
+@require_http_methods(["GET"])
+def sales_rep_record(request, id):
+    if request.method == "GET":
+        try:
+            sales = SaleRecord.objects.filter(sales_rep__employee_id=id)
+            return JsonResponse(
+            {"sales": sales},
+            encoder=SaleRecordEncoder,
+            safe=False
+        )
+        except SaleRecord.DoesNotExist:
+            response = JsonResponse(
+                {"message": "No sales record"}
+            )
+            response.status_code = 404
+            return response
+
+
 @require_http_methods(["GET", "DELETE"])
 def sale_detail(request, id):
     if request.method == "GET":
@@ -180,3 +190,21 @@ def sale_detail(request, id):
         count, _ = SaleRecord.objects.filter(id=id).delete()
         return JsonResponse(
             {"deleted": count > 0})
+
+
+@require_http_methods(["GET", "POST"])
+def automobile_list(request):
+    if request.method == "GET":
+        automobiles = AutomobileVO.objects.all()
+        return JsonResponse(
+            {"automobiles": automobiles},
+            encoder=AutomobileVOEncoder,
+        )
+    else:
+        content = json.loads(request.body)
+        automobile = AutomobileVO.objects.create(**content)
+        return JsonResponse(
+            automobile,
+            encoder=AutomobileVOEncoder,
+            safe=False,
+            )
