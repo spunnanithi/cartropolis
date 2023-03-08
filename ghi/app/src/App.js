@@ -4,6 +4,8 @@ import Nav from "./Nav";
 import ListAppointment from "./ListAppointment";
 import SalesList from "./SalesList";
 import SalesRecordForm from "./SalesRecordForm";
+import SalesRepForm from "./SalesRepForm";
+import CustomerForm from "./CustomerForm";
 
 function App() {
 	return (
@@ -17,10 +19,16 @@ function App() {
 						<Route path="" element={<ListAppointment />}></Route>
 					</Route>
 					<Route path="sales">
-						<Route path="" element={<SalesList sale={PaymentResponse.sale} />} />
+						<Route path="" element={<SalesList />} />
 					</Route>
 					<Route path="sales">
 						<Route path="new" element={<SalesRecordForm />} />
+					</Route>
+					<Route path="salesrep">
+						<Route path="" element={<SalesRepForm />} />
+					</Route>
+					<Route path="customer">
+						<Route path="" element={<CustomerForm />} />
 					</Route>
 				</Routes>
 			</div>

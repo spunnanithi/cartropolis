@@ -44,6 +44,16 @@ function Nav() {
 								Record A New Sale
 							</NavLink>
 						</li>
+						<li className="nav-item">
+							<NavLink className="nav-link is-active" aria-current="page" to="/salesrep">
+								Add New Sales Rep
+							</NavLink>
+						</li>
+						<li className="nav-item">
+							<NavLink className="nav-link is-active" aria-current="page" to="/customer">
+								Add New Customer
+							</NavLink>
+						</li>
 					</ul>
 				</div>
 			</div>

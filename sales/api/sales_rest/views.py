@@ -3,7 +3,6 @@ from django.views.decorators.http import require_http_methods
 from .models import SaleRecord, AutomobileVO, Customer, SalesRep
 from django.http import JsonResponse
 import json
-from django.core.exceptions import ObjectDoesNotExist
 
 
 class AutomobileVOEncoder(ModelEncoder):
