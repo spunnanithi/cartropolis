@@ -14,7 +14,7 @@ const InventoryPage = () => {
 						<NavLink to="models">Vehicle Models</NavLink>
 					</div>
 					<div className="col-md">
-						<NavLink to="automobiles">Automobiles</NavLink>
+						<NavLink to="automobile">Automobiles</NavLink>
 					</div>
 				</div>
 				<div className="row">

@@ -50,18 +50,10 @@ function App() {
 					</Route>
 					<Route path="sales">
 						<Route path="" element={<SalesList />} />
-						<Route path="new">
-							<Route path="new" element={<SalesRecordForm />} />
-						</Route>
-						<Route path="salesrep">
-							<Route path="" element={<SalesRepForm />} />
-						</Route>
-						<Route path="customer">
-							<Route path="" element={<CustomerForm />} />
-						</Route>
-						<Route path="sales-history">
-							<Route path="" element={<SalesRepHistory />} />
-						</Route>
+						<Route path="new" element={<SalesRecordForm />} />
+						<Route path="salesrep" element={<SalesRepForm />}></Route>
+						<Route path="customer" element={<CustomerForm />}></Route>
+						<Route path="sales-history" element={<SalesRepHistory />}></Route>
 					</Route>
 				</Routes>
 			</div>
