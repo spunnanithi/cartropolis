@@ -83,22 +83,6 @@ const ListAppointment = () => {
 	return (
 		<div className="container">
 			<h1 className="mt-3 mb-3">Service Appointments</h1>
-			<div className="d-flex">
-				<NavLink className="nav-link mb-3" aria-current="page" to="new">
-					<button className="btn btn-primary">
-						Enter a Service Appointment
-					</button>
-				</NavLink>
-				<NavLink
-					className="nav-link mb-3"
-					aria-current="page"
-					to="technicians/new">
-					<button className="btn btn-primary">Enter a Technician</button>
-				</NavLink>
-				<NavLink className="nav-link mb-3" aria-current="page" to="search">
-					<button className="btn btn-primary">Search appointment by VIN</button>
-				</NavLink>
-			</div>
 			<table className="table table-striped">
 				<thead>
 					<tr>

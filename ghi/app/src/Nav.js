@@ -29,10 +29,48 @@ function Nav() {
 								Inventory
 							</NavLink>
 						</li>
-						<li className="nav-item">
-							<NavLink className="nav-link" aria-current="page" to="services">
+						<li className="dropdown nav-item">
+							<a
+								className="nav-link dropdown-toggle"
+								href="#"
+								id="navbarDarkDropdownMenuLink"
+								role="button"
+								data-bs-toggle="dropdown"
+								aria-expanded="false">
 								Services
-							</NavLink>
+							</a>
+							<ul
+								className="dropdown-menu"
+								aria-labelledby="navbarDarkDropdownMenuLink">
+								<li className="dropdown-item nav-link">
+									<NavLink
+										className="active text-black text-decoration-none"
+										to="services">
+										List of Service Appointments
+									</NavLink>
+								</li>
+								<li className="dropdown-item nav-link">
+									<NavLink
+										className="active text-black text-decoration-none"
+										to="services/search">
+										Search for Appointment
+									</NavLink>
+								</li>
+								<li className="dropdown-item nav-link">
+									<NavLink
+										className="active text-black text-decoration-none"
+										to="services/new">
+										Enter a Service Appointment
+									</NavLink>
+								</li>
+								<li className="dropdown-item nav-link">
+									<NavLink
+										className="active text-black text-decoration-none"
+										to="services/technicians/new">
+										Enter a Technician
+									</NavLink>
+								</li>
+							</ul>
 						</li>
 						<li className="nav-item">
 							<NavLink className="nav-link" aria-current="page" to="/">
