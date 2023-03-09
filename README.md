@@ -23,9 +23,15 @@ https://gitlab.com/spunnanithi/project-beta
 7. Once you have completed those steps you will be able to render the webpage using
    http://localhost:3000/ with 3000 being the port used.
 
-## Service microservice
+
 
 <img src="project-beta-diagram.png" width="1000" height="500">
+
+
+
+
+
+
 
 ---
 
@@ -382,6 +388,8 @@ CustomerForm = (has a link title of "Add New Customer") which has three input fi
 
 SALES MICROSERVICE PORT:8090
 
+CRUD:
+
 SALES INSOMNIA URLS:
 
 http://localhost:8090/api/salesrep/ (for the sale reps list and to create a new sales rep)
@@ -405,23 +413,28 @@ TESTING CUSTOMER ASPECT:
 
 - Test creating a customer here is the JSON body to use with a POST method.
 
+```js
 {
 "name": "Peter Parker",
 "address": "20 ingram st, Queens, NY",
 "phone": "123-456-7890",
 }
+```
 
-(you will then be returned a "customer" array with name, address, phone, id)
+(you will then be returned a "customer" array with name, address, phone, id below is an example of what the result will look like)
 
 - View the customer details you will need to add the id # into <int:id> using a GET method.
 
 here is an example of how to do this:
+
+```js
 {
 "name": "Peter Parker",
 "address": "20 ingram st, Queens, NY",
 "phone": "123-456-7890",
 "id": 3
 }
+```
 
 after creating your customer you will have a unique id linked to their information. You will see that as 3 in the example above. you then replace the <int:id> with that id number, like shown below.
 
@@ -433,31 +446,103 @@ TESTING SALES ASPECT:
 
 - Test creating a sales rep, here is the JSON body to use with a POST method.
 
+```js
 {
 "name": "test Rep 4",
 "employee_id": 4
 }
+```
 
-(you will then be returned a "salesrep" array with name, employee, and a unique id #)
+(you will then be returned a "salesrep" array with name, employee, and a unique id # shown below)
+
+```js
+{
+	"salesrep": {
+		"name": "test Rep 4",
+		"employee_id": 4,
+		"id": 4
+	}
+}
+```
 
 - Test the creation of a automobile sale, here is the JSON body to use. You will need to use a POST method.(In order to create a sale a customer, automobile and sales rep must already be created)
 
+```js
 {
 "customer" : "Joe Dirt",
 "automobile" : "12345678912345678", (vin number here)
 "sales_rep": 1, (sale rep employee number)
 "price" : 50000
 }
+```
 
-(you will then be returned information for the sales rep, the customer, and automobile. which can also be viewed via sales list or sale detail)
+(you will then be returned information for the sales rep, the customer, and automobile. which can also be viewed via sales list or sale detail shown below)
+
+```js
+{
+	"sales_rep": {
+		"name": "Ron Burgundy",
+		"employee_id": 5,
+		"id": 5
+	},
+	"customer": {
+		"name": "Peter Parker",
+		"address": "20 ingram st, Queens, NY",
+		"phone": "123-456-7890",
+		"id": 3
+	},
+	"automobile": {
+		"year": 2023,
+		"import_href": "/api/automobiles/24689283475689/",
+		"color": "Black",
+		"vin": "24689283475689",
+		"sold": true,
+		"id": 6
+	},
+	"price": 50000,
+	"id": 42
+}
+
+```
 
 - View an individual sales rep sales history you will need to use the GET method and add the employee_id into the <int:id> of the url. To test this you need to complete the steps above and created a successful sale.
 
+```js
 {
 "name": "Ron Burgundy",
 "employee_id": 5,
 "id": 5
 }
+```
+
+(the result will be similar to below)
+
+```js
+{
+	"sales_rep": {
+		"name": "Ron Burgundy",
+		"employee_id": 5,
+		"id": 5
+	},
+	"customer": {
+		"name": "Peter Parker",
+		"address": "20 ingram st, Queens, NY",
+		"phone": "123-456-7890",
+		"id": 3
+	},
+	"automobile": {
+		"year": 2023,
+		"import_href": "/api/automobiles/24689283475689/",
+		"color": "Black",
+		"vin": "24689283475689",
+		"sold": true,
+		"id": 6
+	},
+	"price": 50000,
+	"id": 42
+}
+```
+
 
 below is an example of using the employee_id in the url for insomnia
 
@@ -473,6 +558,7 @@ http://localhost:8090/api/salesrep/5/
 
 -View specific details of an automobile sale using GET method, you will need to locate the id below the price and then input that id in the url <int:id> in insomnia. You can find this id information by looking at the sales list url which will provide the id needed. Below is an example of implementing this.
 
+```js
 {
 "automobile": {
 "year": 2023,
@@ -485,6 +571,7 @@ http://localhost:8090/api/salesrep/5/
 "price": 50000,
 "id": 42
 }
+```
 
 http://localhost:8090/api/sale/42/
 
