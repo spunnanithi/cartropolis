@@ -38,6 +38,310 @@ https://gitlab.com/spunnanithi/project-beta
 
 ### RESTful API CRUD Routes
 
+In your Insomnia you will be able to use these steps to test all functionality
+
+### Manufacturer
+
+- To create a manufacturer use a Post method request to http://localhost:8100/api/manufacturers/
+
+This is an example of JSON body to use
+
+```js
+{
+  "name": "Chrysler"
+}
+```
+
+(Upon successful creation it will show information like below)
+
+```js
+{
+  "href": "/api/manufacturers/1/",
+  "id": 1,
+  "name": "Chrysler"
+}
+```
+
+- To view a list of manufacturers using a GET method request to http://localhost:8100/api/manufacturers/
+
+It will return information as shown in this example:
+
+```js
+{
+  "manufacturers": [
+	{
+  "href": "/api/manufacturers/1/",
+  "id": 1,
+  "name": "Chrysler"
+	}
+  ]
+}
+```
+
+- To get a specific manufacturers detail use a GET method request to http://localhost:8100/api/manufacturers/:id/ using the id as shown above in the :id which would be 1. this is an example of what you would see below.
+
+```js
+{
+  "href": "/api/manufacturers/1/",
+  "id": 1,
+  "name": "Chrysler"
+}
+```
+
+- To update a specific manufacturer use a POST method request to http://localhost:8100/api/manufacturers/:id/
+using the id in the url the same as above.
+
+This is the JSON body and only the name information is needed
+
+```js
+{
+  "name": "Chrysler"
+}
+```
+
+- To delete a specific manufacturer use a DELETE method request to http://localhost:8100/api/manufacturers/:id/
+using the id. When successfully deleted the manufacturer will be removed from the list view and the database.
+
+Example of the id to be used, which would be 1 in this case.
+
+```js
+{
+  "href": "/api/manufacturers/1/",
+  "id": 1,
+  "name": "Chrysler"
+}
+```
+
+### Vehicle
+
+
+- To create a vehicle you first need to have created a manufacturer. you then can send a POST request to http://localhost:8100/api/models/
+it requires the manufacturer id and a picture url.
+
+Here is an example of the JSON body
+
+```js
+{
+  "name": "Sebring",
+  "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
+  "manufacturer_id": 1
+}
+```
+
+(After successful creation you will see shown below)
+
+```js
+{
+  "href": "/api/models/1/",
+  "id": 1,
+  "name": "Sebring",
+  "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
+  "manufacturer": {
+    "href": "/api/manufacturers/1/",
+    "id": 1,
+    "name": "Daimler-Chrysler"
+  }
+}
+```
+
+-To view a list of all vehicles send a GET request to http://localhost:8100/api/models/
+and example below of what you will see.
+
+```js
+{
+  "models": [
+    {
+      "href": "/api/models/1/",
+      "id": 1,
+      "name": "Sebring",
+      "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
+      "manufacturer": {
+        "href": "/api/manufacturers/1/",
+        "id": 1,
+        "name": "Daimler-Chrysler"
+      }
+    }
+  ]
+}
+```
+
+- To view a specific vehicle details you use a GET request to http://localhost:8100/api/models/:id/
+use use the id in the models which as shown in the example above would be 1.
+This is an example of what you will see.
+
+```js
+{
+  "href": "/api/models/1/",
+  "id": 1,
+  "name": "Sebring",
+  "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
+  "manufacturer": {
+    "href": "/api/manufacturers/1/",
+    "id": 1,
+    "name": "Daimler-Chrysler"
+  }
+}
+```
+
+- To update a specific vehicle you use a PUT request to http://localhost:8100/api/models/:id/
+referencing id of the model as done in view details. Updating a vehicle can take either name or a picture url.
+example of the JSON body.
+
+```js
+{
+  "name": "Sebring",
+  "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg"
+}
+```
+
+- To delete you use the DELETE method request to http://localhost:8100/api/models/:id/
+referencing the id of model. You would use the model id which is below the href in example below.
+When successfully deleted the vehicle will be removed from the list view and database.
+
+```js
+{
+  "models": [
+    {
+      "href": "/api/models/1/",
+      "id": 1,
+      "name": "Sebring",
+      "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
+      "manufacturer": {
+        "href": "/api/manufacturers/1/",
+        "id": 1,
+        "name": "Daimler-Chrysler"
+      }
+    }
+  ]
+}
+```
+
+### Automobile
+
+- To create automobile you need to have created a manufacturer and vehicle first. Then send a POST method request to http://localhost:8100/api/automobiles/
+you will need the model id to use in the JSON body when creating.
+Example of JSON body to use.
+
+```js
+{
+  "color": "red",
+  "year": 2012,
+  "vin": "1C3CC5FB2AN120174",
+  "model_id": 1
+}
+```
+
+(and you will see this upon successful creation)
+
+```js
+{
+  "href": "/api/automobiles/1C3CC5FB2AN120174/",
+  "id": 1,
+  "color": "yellow",
+  "year": 2013,
+  "vin": "1C3CC5FB2AN120174",
+  "model": {
+    "href": "/api/models/1/",
+    "id": 1,
+    "name": "Sebring",
+    "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
+    "manufacturer": {
+      "href": "/api/manufacturers/1/",
+      "id": 1,
+      "name": "Daimler-Chrysler"
+    }
+  }
+}
+```
+
+- To view a list of all automobiles use a GET method to http://localhost:8100/api/automobiles/
+below is an example of what will show after the GET.
+
+```js
+{
+  "href": "/api/automobiles/1C3CC5FB2AN120174/",
+  "id": 1,
+  "color": "yellow",
+  "year": 2013,
+  "vin": "1C3CC5FB2AN120174",
+  "model": {
+    "href": "/api/models/1/",
+    "id": 1,
+    "name": "Sebring",
+    "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
+    "manufacturer": {
+      "href": "/api/manufacturers/1/",
+      "id": 1,
+      "name": "Daimler-Chrysler"
+    }
+  }
+}
+```
+
+- To view the specific details of an automobile you send a GET method request to http://localhost:8100/api/automobiles/:vin/
+however unlike in the manufacturer and vehicle we use the vin in the url, which can be found using the list all automobiles.
+Example of the url with vin added http://localhost:8100/api/automobiles/1C3CC5FB2AN120174/ and an example of the GET result.
+
+```js
+{
+  "href": "/api/automobiles/1C3CC5FB2AN120174/",
+  "id": 1,
+  "color": "yellow",
+  "year": 2013,
+  "vin": "1C3CC5FB2AN120174",
+  "model": {
+    "href": "/api/models/1/",
+    "id": 1,
+    "name": "Sebring",
+    "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
+    "manufacturer": {
+      "href": "/api/manufacturers/1/",
+      "id": 1,
+      "name": "Daimler-Chrysler"
+    }
+  }
+}
+```
+
+- To update a specific automobile use a PUT method request to http://localhost:8100/api/automobiles/:vin/
+using the vin again in the url. Here is an example of using vin http://localhost:8100/api/automobiles/1C3CC5FB2AN120174/
+and when updating you can change the color or year.
+Example of JSON body.
+
+```js
+{
+  "color": "red",
+  "year": 2012
+}
+```
+
+- To delete a specific automobile use the DELETE method request to http://localhost:8100/api/automobiles/:vin/ and use the vin in the url.
+Here is an example of the url with vin http://localhost:8100/api/automobiles/1C3CC5FB2AN120174/
+when successfully deleted you will see that the automobile has been removed from the list and database.
+Example of where to find the vin, you can view the list and take the href with the vin or the vin for the url.
+
+```js
+{
+  "href": "/api/automobiles/1C3CC5FB2AN120174/",
+  "id": 1,
+  "color": "yellow",
+  "year": 2013,
+  "vin": "1C3CC5FB2AN120174",
+  "model": {
+    "href": "/api/models/1/",
+    "id": 1,
+    "name": "Sebring",
+    "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
+    "manufacturer": {
+      "href": "/api/manufacturers/1/",
+      "id": 1,
+      "name": "Daimler-Chrysler"
+    }
+  }
+}
+```
+
+
 
 
 
@@ -371,7 +675,7 @@ The sales microservice is responsible for handling the creation of customers and
 Explain your models and integration with the inventory
 microservice, here.
 
-The four Microservice models:
+### The four Microservice models:
 
 1. AutomobileVO:
    We use this model to deal with integrating the inventory microservice by implementing a value object using "vin" as the unique property. by using "vin" we are able to pull individual values of "automobile" from our inventory microservice. This makes it possible to use foreign key relationships between our sales history and automobile from inventory. in order to do all of this we created a pll function that is linked to the inventory microservice.
@@ -385,7 +689,7 @@ The four Microservice models:
 4. SalesRecord:
    This model enabled the creation of a sales record using the other three models via a foreign key relationship. Then the price property was added.
 
-MY NAMING CONVENTIONS FOR THIS PROJECT:
+### MY NAMING CONVENTIONS FOR THIS PROJECT:
 
 SalesRecordForm = Create a sale with customer, automobile, sales rep, and the price.
 
@@ -397,11 +701,11 @@ SalesRepForm = (has the link title of "Add New Sales Rep") which has two input f
 
 CustomerForm = (has a link title of "Add New Customer") which has three input fields for name, address, and phone number.
 
-SALES MICROSERVICE PORT:8090
+### SALES MICROSERVICE PORT:8090
 
-CRUD:
+### CRUD:
 
-SALES INSOMNIA URLS:
+### SALES INSOMNIA URLS:
 
 http://localhost:8090/api/salesrep/ (for the sale reps list and to create a new sales rep)
 
@@ -413,14 +717,14 @@ http://localhost:8090/api/sale/ (for the sales list and to create a sale)
 
 http://localhost:8090/api/sale/<int:id>/ (for the sale details and to delete a sale)
 
-CUSTOMER INSOMNIA URLS:
+### CUSTOMER INSOMNIA URLS:
 
 http://localhost:8090/api/customer/ for the customer list and to create a customer
 http://localhost:8090/api/customer/<int:id>/ for customer details
 
 _when testing using insomnia the (task) corresponds with the link used_
 
-TESTING CUSTOMER ASPECT:
+### TESTING CUSTOMER ASPECT:
 
 - Test creating a customer here is the JSON body to use with a POST method.
 
@@ -453,7 +757,7 @@ http://localhost:8090/api/customer/3/
 
 (this will then return the individual customers information of name, address, phone number and unique id)
 
-TESTING SALES ASPECT:
+### TESTING SALES ASPECT:
 
 - Test creating a sales rep, here is the JSON body to use with a POST method.
 
@@ -590,7 +894,7 @@ http://localhost:8090/api/sale/42/
 
 -Delete a sale is the same as the steps above using DELETE method in insomnia and implementing the use of ID in the same way.
 
-FRONT-END WITH REACT:
+### FRONT-END WITH REACT:
 
 1. Create customer => CustomerForm.js => (browser link) Add New Customer
    http://localhost:3000/sales/customer => url
@@ -607,12 +911,12 @@ FRONT-END WITH REACT:
 5. Sales rep sale record => SalesRepHistory.js => (browser Link) Sales Rep History
    http://localhost:3000/sales/sales-history => url
 
-6. This renders a form that requires three inputs which are name, address, and phone number. Once you click the submit button the customer is created and their information added to the database. The page then refreshes and is ready for another customers information.
+1. This renders a form that requires three inputs which are name, address, and phone number. Once you click the submit button the customer is created and their information added to the database. The page then refreshes and is ready for another customers information.
 
-7. This renders a form that requires two inputs which are name and employee ID. once you click the submit button the new sales rep is created and their information added to the database. The page then refreshes and is ready for another customers information.
+2. This renders a form that requires two inputs which are name and employee ID. once you click the submit button the new sales rep is created and their information added to the database. The page then refreshes and is ready for another customers information.
 
-8. This renders a list of all automobiles sold with the information for the sales rep who made the sale, their employee id, the customer who made the purchase, the VIN related to the vehicle, the sale price, and a delete button to remove any sales from the list.
+3. This renders a list of all automobiles sold with the information for the sales rep who made the sale, their employee id, the customer who made the purchase, the VIN related to the vehicle, the sale price, and a delete button to remove any sales from the list.
 
-9. this renders a form that requires four inputs that creates a new sale of an automobile. It uses a drop down bar for the automobile, the sales rep, and to choose a customer with all this information on the database. The automobiles are only the ones that have not been sold and are available for purchase. The last input is for the price of the automobile being sold and once the submit button is hit all the information is added to the database. And then can be viewed on the sales list and the sale reps history.
+4. this renders a form that requires four inputs that creates a new sale of an automobile. It uses a drop down bar for the automobile, the sales rep, and to choose a customer with all this information on the database. The automobiles are only the ones that have not been sold and are available for purchase. The last input is for the price of the automobile being sold and once the submit button is hit all the information is added to the database. And then can be viewed on the sales list and the sale reps history.
 
-10. this renders a table with headers of sales representative, customer, vin, and price. In order for the table data to populate we need to select a sales reps by using the drop down bar that says "Choose A sales Representative". You can select different sales reps and the page will repopulate according to your selection.
+5. this renders a table with headers of sales representative, customer, vin, and price. In order for the table data to populate we need to select a sales reps by using the drop down bar that says "Choose A sales Representative". You can select different sales reps and the page will repopulate according to your selection.
