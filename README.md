@@ -7,25 +7,36 @@ Team:
 
 ## Design
 
+<img src="project-beta-diagram.png" width="1000" height="500">
+
 This is the link to the repo where you will first need to go in order to fork and clone this project.
 
 https://gitlab.com/spunnanithi/project-beta
 
-1. you will select the fork option and enter your own username when filling out the information.
-2. you will than select the clone option and copy the information to be entered into your terminal
-3. in your terminal you will cd into your projects folder
-4. you will enter the command git clone https://gitlab.com/(yourusername)/project-beta
-5. you will then cd into the cloned projects folder
-6. you then do these commands to create/build/start your container
-   -docker volume create beta-data
-   -docker-compose build
-   -docker-compose up
+1. You will select the fork option and enter your own username when filling out the information.
+2. You will than select the clone option and copy the information to be entered into your terminal
+3. In your terminal you will cd into your projects folder
+4. You will enter the command git clone https://gitlab.com/(yourusername)/project-beta
+5. You will then cd into the cloned projects folder
+6. You then do these commands to create/build/start your container
+   ```sh
+   docker volume create beta-data
+   docker-compose build
+   docker-compose up
+   ```
 7. Once you have completed those steps you will be able to render the webpage using
    http://localhost:3000/ with 3000 being the port used.
 
 
+---
 
-<img src="project-beta-diagram.png" width="1000" height="500">
+## Inventory Microservice
+
+### Front-End
+
+### Back-End
+
+### RESTful API CRUD Routes
 
 
 
