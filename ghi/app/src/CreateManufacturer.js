@@ -1,7 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CreateManufacturer = () => {
+	const navigate = useNavigate();
 	const [name, setName] = useState("");
 
 	const handleFormChange = (event) => {
@@ -29,8 +31,7 @@ const CreateManufacturer = () => {
 		const response = await fetch(manufacturerUrl, fetchConfig);
 
 		if (response.ok) {
-			const newManufacturer = await response.json();
-
+			navigate("/inventory", { replace: true });
 			setName("");
 		}
 	};

@@ -1,7 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CreateAutomobile = () => {
+	const navigate = useNavigate();
 	const [vehicleModels, setVehicleModels] = useState([]);
 
 	const [color, setColor] = useState("");
@@ -46,7 +48,7 @@ const CreateAutomobile = () => {
 		const response = await fetch(automobileUrl, fetchConfig);
 
 		if (response.ok) {
-			const newAutomobile = await response.json();
+			navigate("/inventory", { replace: true });
 
 			setColor("");
 			setYear("");
