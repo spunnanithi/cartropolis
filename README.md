@@ -37,7 +37,6 @@ docker-compose up
 7. Once you have completed those steps you will be able to render the webpage using
    http://localhost:3000/ with 3000 being the port used.
 
-
 ---
 
 ## Inventory Microservice
@@ -119,7 +118,7 @@ It will return information as shown in this example:
 ```
 
 - To update a specific manufacturer use a POST method request to http://localhost:8100/api/manufacturers/:id/
-using the id in the url the same as above.
+  using the id in the url the same as above.
 
 This is the JSON body and only the name information is needed
 
@@ -130,7 +129,7 @@ This is the JSON body and only the name information is needed
 ```
 
 - To delete a specific manufacturer use a DELETE method request to http://localhost:8100/api/manufacturers/:id/
-using the id. When successfully deleted the manufacturer will be removed from the list view and the database.
+  using the id. When successfully deleted the manufacturer will be removed from the list view and the database.
 
 Example of the id to be used, which would be 1 in this case.
 
@@ -144,9 +143,8 @@ Example of the id to be used, which would be 1 in this case.
 
 ### Vehicle
 
-
 - To create a vehicle you first need to have created a manufacturer. you then can send a POST request to http://localhost:8100/api/models/
-it requires the manufacturer id and a picture url.
+  it requires the manufacturer id and a picture url.
 
 Here is an example of the JSON body
 
@@ -196,8 +194,8 @@ and example below of what you will see.
 ```
 
 - To view a specific vehicle details you use a GET request to http://localhost:8100/api/models/:id/
-use use the id in the models which as shown in the example above would be 1.
-This is an example of what you will see.
+  use use the id in the models which as shown in the example above would be 1.
+  This is an example of what you will see.
 
 ```js
 {
@@ -214,8 +212,8 @@ This is an example of what you will see.
 ```
 
 - To update a specific vehicle you use a PUT request to http://localhost:8100/api/models/:id/
-referencing id of the model as done in view details. Updating a vehicle can take either name or a picture url.
-example of the JSON body.
+  referencing id of the model as done in view details. Updating a vehicle can take either name or a picture url.
+  example of the JSON body.
 
 ```js
 {
@@ -225,8 +223,8 @@ example of the JSON body.
 ```
 
 - To delete you use the DELETE method request to http://localhost:8100/api/models/:id/
-referencing the id of model. You would use the model id which is below the href in example below.
-When successfully deleted the vehicle will be removed from the list view and database.
+  referencing the id of model. You would use the model id which is below the href in example below.
+  When successfully deleted the vehicle will be removed from the list view and database.
 
 ```js
 {
@@ -249,8 +247,8 @@ When successfully deleted the vehicle will be removed from the list view and dat
 ### Automobile
 
 - To create automobile you need to have created a manufacturer and vehicle first. Then send a POST method request to http://localhost:8100/api/automobiles/
-you will need the model id to use in the JSON body when creating.
-Example of JSON body to use.
+  you will need the model id to use in the JSON body when creating.
+  Example of JSON body to use.
 
 ```js
 {
@@ -285,7 +283,7 @@ Example of JSON body to use.
 ```
 
 - To view a list of all automobiles use a GET method to http://localhost:8100/api/automobiles/
-below is an example of what will show after the GET.
+  below is an example of what will show after the GET.
 
 ```js
 {
@@ -309,8 +307,8 @@ below is an example of what will show after the GET.
 ```
 
 - To view the specific details of an automobile you send a GET method request to http://localhost:8100/api/automobiles/:vin/
-however unlike in the manufacturer and vehicle we use the vin in the url, which can be found using the list all automobiles.
-Example of the url with vin added http://localhost:8100/api/automobiles/1C3CC5FB2AN120174/ and an example of the GET result.
+  however unlike in the manufacturer and vehicle we use the vin in the url, which can be found using the list all automobiles.
+  Example of the url with vin added http://localhost:8100/api/automobiles/1C3CC5FB2AN120174/ and an example of the GET result.
 
 ```js
 {
@@ -334,9 +332,9 @@ Example of the url with vin added http://localhost:8100/api/automobiles/1C3CC5FB
 ```
 
 - To update a specific automobile use a PUT method request to http://localhost:8100/api/automobiles/:vin/
-using the vin again in the url. Here is an example of using vin http://localhost:8100/api/automobiles/1C3CC5FB2AN120174/
-and when updating you can change the color or year.
-Example of JSON body.
+  using the vin again in the url. Here is an example of using vin http://localhost:8100/api/automobiles/1C3CC5FB2AN120174/
+  and when updating you can change the color or year.
+  Example of JSON body.
 
 ```js
 {
@@ -346,9 +344,9 @@ Example of JSON body.
 ```
 
 - To delete a specific automobile use the DELETE method request to http://localhost:8100/api/automobiles/:vin/ and use the vin in the url.
-Here is an example of the url with vin http://localhost:8100/api/automobiles/1C3CC5FB2AN120174/
-when successfully deleted you will see that the automobile has been removed from the list and database.
-Example of where to find the vin, you can view the list and take the href with the vin or the vin for the url.
+  Here is an example of the url with vin http://localhost:8100/api/automobiles/1C3CC5FB2AN120174/
+  when successfully deleted you will see that the automobile has been removed from the list and database.
+  Example of where to find the vin, you can view the list and take the href with the vin or the vin for the url.
 
 ```js
 {
@@ -370,13 +368,6 @@ Example of where to find the vin, you can view the list and take the href with t
   }
 }
 ```
-
-
-
-
-
-
-
 
 ---
 
@@ -550,6 +541,8 @@ Sample JSON request object to update an appointment: <br/>
 	"is_vip": false
 }
 ```
+
+> `{"is_finished": false}` can be manually passed into the JSON request body to make it appear in the React Appointment Listing after clicking "Finished" or "Canceled".
 
 Sample return JSON response after updating individual appointment:
 
@@ -888,7 +881,6 @@ http://localhost:8090/api/customer/3/
 }
 ```
 
-
 below is an example of using the employee_id in the url for insomnia
 
 http://localhost:8090/api/salesrep/5/record/
@@ -941,12 +933,12 @@ http://localhost:8090/api/sale/42/
 5. Sales rep sale record => SalesRepHistory.js => (browser Link) Sales Rep History
    http://localhost:3000/sales/sales-history => url
 
-1. This renders a form that requires three inputs which are name, address, and phone number. Once you click the submit button the customer is created and their information added to the database. The page then refreshes and is ready for another customers information.
+6. This renders a form that requires three inputs which are name, address, and phone number. Once you click the submit button the customer is created and their information added to the database. The page then refreshes and is ready for another customers information.
 
-2. This renders a form that requires two inputs which are name and employee ID. once you click the submit button the new sales rep is created and their information added to the database. The page then refreshes and is ready for another customers information.
+7. This renders a form that requires two inputs which are name and employee ID. once you click the submit button the new sales rep is created and their information added to the database. The page then refreshes and is ready for another customers information.
 
-3. This renders a list of all automobiles sold with the information for the sales rep who made the sale, their employee id, the customer who made the purchase, the VIN related to the vehicle, the sale price, and a delete button to remove any sales from the list.
+8. This renders a list of all automobiles sold with the information for the sales rep who made the sale, their employee id, the customer who made the purchase, the VIN related to the vehicle, the sale price, and a delete button to remove any sales from the list.
 
-4. this renders a form that requires four inputs that creates a new sale of an automobile. It uses a drop down bar for the automobile, the sales rep, and to choose a customer with all this information on the database. The automobiles are only the ones that have not been sold and are available for purchase. The last input is for the price of the automobile being sold and once the submit button is hit all the information is added to the database. And then can be viewed on the sales list and the sale reps history.
+9. this renders a form that requires four inputs that creates a new sale of an automobile. It uses a drop down bar for the automobile, the sales rep, and to choose a customer with all this information on the database. The automobiles are only the ones that have not been sold and are available for purchase. The last input is for the price of the automobile being sold and once the submit button is hit all the information is added to the database. And then can be viewed on the sales list and the sale reps history.
 
-5. this renders a table with headers of sales representative, customer, vin, and price. In order for the table data to populate we need to select a sales reps by using the drop down bar that says "Choose A sales Representative". You can select different sales reps and the page will repopulate according to your selection.
+10. this renders a table with headers of sales representative, customer, vin, and price. In order for the table data to populate we need to select a sales reps by using the drop down bar that says "Choose A sales Representative". You can select different sales reps and the page will repopulate according to your selection.
