@@ -53,8 +53,8 @@ const ListVehicleModels = () => {
 												<td>
 													<img
 														style={{
-															height: "175px",
-															width: "350px",
+															height: "250px",
+															width: "400px",
 														}}
 														src={vehicleModel.picture_url}></img>
 												</td>
