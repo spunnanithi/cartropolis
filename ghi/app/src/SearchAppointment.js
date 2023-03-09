@@ -75,8 +75,7 @@ const SearchAppointment = () => {
 						if (formattedTime.slice(0, 2) >= 12) {
 							isAmOrPm = "PM";
 						} else if (formattedTime.slice(0, 2) == 0) {
-							formattedTime =
-								formattedTime.slice(0, 1) + 1 + formattedTime.slice(2, 5);
+							formattedTime = 12 + formattedTime.slice(2, 5);
 						}
 						if (appointment.vin === searchBar && buttonClick) {
 							return (
