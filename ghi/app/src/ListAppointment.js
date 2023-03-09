@@ -13,8 +13,6 @@ const ListAppointment = () => {
 		if (response.ok) {
 			const data = await response.json();
 			setAppointments(data.appointments);
-		} else {
-			console.error(response);
 		}
 	};
 
@@ -29,8 +27,6 @@ const ListAppointment = () => {
 				return { ...automobile, vin: automobile_vin };
 			});
 			setAutomobiles(automobile);
-		} else {
-			console.log(response);
 		}
 	};
 

@@ -9,21 +9,31 @@ Team:
 
 <img src="project-beta-diagram.png" width="1000" height="500">
 
+- For this project, our group decided to split the application up into three microservices: Service microservice, Sales microservice and Inventory microservice. Each microservice will _"own"_ a particular set of data for which other microservices may poll to utilize as value objects within each respective microservice.
+
+  - Front-end: our group decided to utilize the React library to create a fast and responsive webpage to enhance user experience. The user is able to interact with the webpage at http://localhost:3000/.
+  - Back-end: our group decided to utilize the Django framework to set up RESTful APIs for each microservice. RESTful API requests can be made to the appropriate URLs to obtain necessary data from each microservice.
+  - Docker: a `docker-compose.yml` is provided so it would be easy to build and run Docker containers with necessary dependencies for the whole application.
+
+### Getting Started
+
 This is the link to the repo where you will first need to go in order to fork and clone this project.
 
 https://gitlab.com/spunnanithi/project-beta
 
-1. You will select the fork option and enter your own username when filling out the information.
-2. You will than select the clone option and copy the information to be entered into your terminal
-3. In your terminal you will cd into your projects folder
-4. You will enter the command git clone https://gitlab.com/(yourusername)/project-beta
-5. You will then cd into the cloned projects folder
-6. You then do these commands to create/build/start your container
-   ```sh
-   docker volume create beta-data
-   docker-compose build
-   docker-compose up
-   ```
+1. Select the Fork option and enter your own username when filling out the information.
+2. Select the Clone option and copy the "Clone with HTTPS" key that will be entered into your terminal later.
+3. In your terminal, enter `cd` to change into your projects folder.
+4. Enter the command `git clone https://gitlab.com/(yourusername)/project-beta`.
+5. Enter newly created folder by entering `cd` into the cloned projects folder.
+6. Then enter the following commands to create a database, build/start the Docker container:
+
+```sh
+docker volume create beta-data
+docker-compose build
+docker-compose up
+```
+
 7. Once you have completed those steps you will be able to render the webpage using
    http://localhost:3000/ with 3000 being the port used.
 
@@ -34,7 +44,27 @@ https://gitlab.com/spunnanithi/project-beta
 
 ### Front-End
 
+#### Navigation Links
+
+The React navigation bar features a dedicated "Inventory" navigation link that will take the user to the page with the various links for Manufacturer, Vehicle Model, and Automobile.
+
+#### Manufacturer, Vehicle Model, Automobile Forms
+
+The Manufacturer, Vehicle Model, Automobile Forms each allow a user to create an instance of each respective model. Once the form is submitted, the form data is converted into JSON and sent using a _POST_ HTTP request to the appropriate URL. For the Vehicle Model and Automobile Forms, there are dropdown menus that is populated with either the manufacturer for Vehicle Model or model for the Automobile. The user may choose from the exisiting instances of each respective dropdown menu.
+
+#### Manufacturer, Vehicle Model, Automobile List
+
+The Manufacturer, Vehicle Model, and Automobile List pages allow the user to see a list of instances of each respective Django model.
+
 ### Back-End
+
+#### Models
+
+**Manufacturer (Value Object)** - The Manufacturer model is considered a value object within this bounded context since it has no life cycle or unique identity. A manufacturer instance such as "Ford" cannot be distinguished with another manufacturer instance named "Ford". Therefore, we are only interested with the value this model possesses and not the properties and identity of this model.
+
+**Vehicle Model (Value Object)** - The Vehicle Model model is considered a value object within this bounded context since it has no life cycle or unique identity. Similar to the Manufacturer model, the Vehicle Model model aims to be utilized for its values.
+
+**Automobile (Entity)** - The Automobile model is considered an entity within this bounded context since it has a unique identity. Automobiles can be distinguished by comparing VIN numbers. Since VIN numbers are unique to that specific automobile, that automobile can be identified from other automobiles.
 
 ### RESTful API CRUD Routes
 
@@ -360,13 +390,13 @@ The React navigation bar features a dedicated "Service" dropdown menu to access 
 
 #### Technician Form
 
-The Technician Form page allows the user to create a technician by inputting the technician name and employee number in a form. Once the form is submitted, the form data will be converted to JSON and sent using a _POST_ HTTP request.
+The Technician Form page allows the user to create a technician by inputting the technician name and employee number in a form. Once the form is submitted, the form data will be converted to JSON and sent using a _POST_ HTTP request to the appropriate URL.
 
 > Please see "Create view of technician" in the _**RESTful API CRUD Routes**_ section below for routing details.
 
 #### Service Appointment Form
 
-The Service Appointment Form page allows the user to create a service appointment by inputting the customer name, VIN, date/time, reason for service appointment and technician in a form. Once the form is submitted, the form data will be converted to JSON and sent using a _POST_ HTTP request.
+The Service Appointment Form page allows the user to create a service appointment by inputting the customer name, VIN, date/time, reason for service appointment and technician in a form. Once the form is submitted, the form data will be converted to JSON and sent using a _POST_ HTTP request to the appropriate URL.
 
 > Please see "Create view of appointment" in the _**RESTful API CRUD Routes**_ section below for routing details.
 
