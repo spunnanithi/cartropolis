@@ -20,7 +20,9 @@ const CreateAutomobile = () => {
 		} else if (name === "year") {
 			setYear(value);
 		} else if (name === "vin") {
-			setVin(value);
+			if (value.length <= 17) {
+				setVin(value);
+			}
 		} else if (name === "models") {
 			setVehicleModel(value);
 		}

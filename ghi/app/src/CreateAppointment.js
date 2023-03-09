@@ -18,7 +18,9 @@ const CreateAppointment = () => {
 		if (formName === "customer_name") {
 			setCustomerName(value);
 		} else if (formName === "vin") {
-			setVin(value);
+			if (value.length <= 17) {
+				setVin(value);
+			}
 		} else if (formName === "date") {
 			setDate(value);
 		} else if (formName === "time") {
