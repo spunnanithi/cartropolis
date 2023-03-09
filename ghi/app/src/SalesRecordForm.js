@@ -30,7 +30,6 @@ function SalesRecordForm() {
     const response = await fetch(url);
     const data = await response.json();
     setAutomobile(data.automobile);
-    console.log(data)
     };
 
     const fetchAutomobiles = async () => {
@@ -38,7 +37,6 @@ function SalesRecordForm() {
     const response = await fetch(url);
     const data = await response.json();
     setAutomobiles(data.automobiles);
-    console.log(data)
     };
 
     const fetchSalesReps = async () => {

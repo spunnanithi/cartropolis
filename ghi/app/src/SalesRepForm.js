@@ -30,7 +30,7 @@ function SalesRepForm() {
 
     const response = await fetch(url, fetchConfig);
     if (response.ok) {
-        const data = await response.json();
+        
         setName("");
         setEmployeeId("");
     };

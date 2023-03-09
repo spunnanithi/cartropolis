@@ -50,7 +50,7 @@ const CreateManufacturer = () => {
 								className="form-control"
 								id="name"
 								name="name"
-								placeholder="Please enter technician's name"
+								placeholder=""
 								required
 								onChange={handleFormChange}
 								value={name}></input>
