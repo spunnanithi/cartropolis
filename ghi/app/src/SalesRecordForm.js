@@ -82,6 +82,7 @@ function SalesRecordForm() {
         setPrice("");
         setCustomer("");
         setSalesRep("");
+        fetchAutomobiles();
     }
 };
 
@@ -104,7 +105,7 @@ return (
                 onChange={handleAutomobileChange}
                 name="automobile"
                 >
-                <option value="">Choose A Automobile</option>
+                <option value="">Choose An Automobile</option>
                 {automobiles.map(automobile => {
                     if (automobile.sold === false)
                     return (
@@ -129,7 +130,7 @@ return (
                 <option value="">Choose A Sales Representative</option>
                 {salesReps.map(salesRep => {
                     return (
-                    <option value={salesRep.id} key={salesRep.id}>
+                    <option value={salesRep.employee_id} key={salesRep.employee_id}>
                     {salesRep.name}
                     </option>
                     )

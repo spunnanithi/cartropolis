@@ -48,7 +48,7 @@ return (
                                 {sales.map(sale => (
                                     <tr key={sale.id}>
                                         <td>{sale.sales_rep.name}</td>
-                                        <td>{sale.sales_rep.id}</td>
+                                        <td>{sale.sales_rep.employee_id}</td>
                                         <td>{sale.customer.name}</td>
                                         <td>{sale.automobile.vin}</td>
                                         <td>{sale.price}</td>

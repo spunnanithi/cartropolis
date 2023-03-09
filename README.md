@@ -750,6 +750,7 @@ http://localhost:8090/api/sale/<int:id>/ (for the sale details and to delete a s
 ### CUSTOMER INSOMNIA URLS:
 
 http://localhost:8090/api/customer/ for the customer list and to create a customer
+
 http://localhost:8090/api/customer/<int:id>/ for customer details
 
 _when testing using insomnia the (task) corresponds with the link used_
@@ -950,3 +951,7 @@ http://localhost:8090/api/sale/42/
 4. this renders a form that requires four inputs that creates a new sale of an automobile. It uses a drop down bar for the automobile, the sales rep, and to choose a customer with all this information on the database. The automobiles are only the ones that have not been sold and are available for purchase. The last input is for the price of the automobile being sold and once the submit button is hit all the information is added to the database. And then can be viewed on the sales list and the sale reps history.
 
 5. this renders a table with headers of sales representative, customer, vin, and price. In order for the table data to populate we need to select a sales reps by using the drop down bar that says "Choose A sales Representative". You can select different sales reps and the page will repopulate according to your selection.
+
+
+
+
