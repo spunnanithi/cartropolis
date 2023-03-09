@@ -7,6 +7,8 @@ Team:
 
 ## Design
 
+<img src="project-beta-diagram.png" width="1000" height="500">
+
 ---
 
 ## Service Microservice
