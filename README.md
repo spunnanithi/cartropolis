@@ -9,6 +9,12 @@ Team:
 
 <img src="project-beta-diagram.png" width="1000" height="500">
 
+- For this project, our group decided to split the application up into three microservices: Service microservice, Sales microservice and Inventory microservice. Each microservice will _"own"_ a particular set of data for which other microservices may poll to utilize as value objects within each respective microservice.
+
+  - Front-end: our group decided to utilize the React library to create a fast and responsive webpage to enhance user experience. The user is able to interact with the webpage at http://localhost:3000/.
+  - Back-end: our group decided to utilize the Django framework to set up RESTful APIs for each microservice. RESTful API requests can be made to the appropriate URLs to obtain necessary data from each microservice.
+  - Docker: a `docker-compose.yml` is provided so it would be easy to build and run Docker containers with necessary dependencies for the whole application.
+
 ### Getting Started
 
 This is the link to the repo where you will first need to go in order to fork and clone this project.
@@ -16,10 +22,10 @@ This is the link to the repo where you will first need to go in order to fork an
 https://gitlab.com/spunnanithi/project-beta
 
 1. Select the Fork option and enter your own username when filling out the information.
-2. Select the Clone option and copy the "Clone with HTTPS" key to be entered into your terminal
-3. In your terminal, enter `cd` to change into your projects folder
-4. Enter the command `git clone https://gitlab.com/(yourusername)/project-beta`
-5. Enter newly created folder by entering `cd` into the cloned projects folder
+2. Select the Clone option and copy the "Clone with HTTPS" key that will be entered into your terminal later.
+3. In your terminal, enter `cd` to change into your projects folder.
+4. Enter the command `git clone https://gitlab.com/(yourusername)/project-beta`.
+5. Enter newly created folder by entering `cd` into the cloned projects folder.
 6. Then enter the following commands to create a database, build/start the Docker container:
 
 ```sh
