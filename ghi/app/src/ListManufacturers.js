@@ -41,6 +41,7 @@ const ListManufacturers = () => {
 								<thead>
 									<tr>
 										<th>Name</th>
+										<th>Remove Manufacturer</th>
 									</tr>
 								</thead>
 								<tbody>

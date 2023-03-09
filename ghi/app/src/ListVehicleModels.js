@@ -41,6 +41,7 @@ const ListVehicleModels = () => {
 										<th>Name</th>
 										<th>Manufacturer</th>
 										<th>Picture</th>
+										<th>Remove Vehicle Model</th>
 									</tr>
 								</thead>
 								<tbody>

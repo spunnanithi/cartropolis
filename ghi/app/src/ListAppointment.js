@@ -78,7 +78,7 @@ const ListAppointment = () => {
 
 	return (
 		<div className="container">
-			<h1 className="mt-3 mb-3">Service Appointments</h1>
+			<h1 className="mt-3 mb-3 text-center">Service Appointments</h1>
 			<table className="table table-striped">
 				<thead>
 					<tr>
