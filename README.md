@@ -73,21 +73,21 @@ Send _GET_ request to http://localhost:8080/api/appointments/ <br/>
 
 Sample return JSON response data:<br/>
 
-```
+```json
 {
-    "appointments": [
-        {
-            "id": 1,
-            "vin": "1C3CC5FB2AN120174",
-            "customer_name": "Betty",
-            "date": "2023-03-03",
-            "time": "06:20:08.937326",
-            "reason": "Check engine light diagnosis",
-            "is_finished": false,
-            "is_vip": false,
-            "technician": "Brian"
-        },
-        {
+	"appointments": [
+		{
+			"id": 1,
+			"vin": "1C3CC5FB2AN120174",
+			"customer_name": "Betty",
+			"date": "2023-03-03",
+			"time": "06:20:08.937326",
+			"reason": "Check engine light diagnosis",
+			"is_finished": false,
+			"is_vip": false,
+			"technician": "Brian"
+		},
+		{
 			"id": 3,
 			"vin": "6GJ94YOC5SQ2O5A87",
 			"customer_name": "Tim",
@@ -98,7 +98,7 @@ Sample return JSON response data:<br/>
 			"is_vip": false,
 			"technician": "Robert"
 		}
-    ]
+	]
 }
 ```
 
@@ -110,7 +110,7 @@ Send _POST_ request to http://localhost:8080/api/appointments/
 
 Sample JSON request object to create new appointment: <br/>
 
-```
+```json
 {
 	"vin": "6GJ94YOC5SQ2O5A87",
 	"customer_name": "Tim",
@@ -123,7 +123,7 @@ Sample JSON request object to create new appointment: <br/>
 
 Sample return JSON response after sending POST request:<br/>
 
-```
+```json
 {
 	"vin": "6GJ94YOC5SQ2O5A87",
 	"customer_name": "Tim",
@@ -148,18 +148,18 @@ Send _GET_ request to http://localhost:8080/api/appointments/id/ <br/>
 
 Sample return JSON response for individual appointment:
 
-```
+```json
 {
-			"id": 3,
-			"vin": "6GJ94YOC5SQ2O5A87",
-			"customer_name": "Tim",
-			"date": "2021-04-12",
-			"time": "13:40:08.937326",
-			"reason": "Check engine light diagnosis",
-			"is_finished": true,
-			"is_vip": false,
-			"technician": "Robert"
-		}
+	"id": 3,
+	"vin": "6GJ94YOC5SQ2O5A87",
+	"customer_name": "Tim",
+	"date": "2021-04-12",
+	"time": "13:40:08.937326",
+	"reason": "Check engine light diagnosis",
+	"is_finished": true,
+	"is_vip": false,
+	"technician": "Robert"
+}
 ```
 
 <br/>
@@ -172,19 +172,19 @@ Sample JSON request object to update an appointment: <br/>
 
 > **NOTE**: Depending on which properties need to change, the request below may feature less properties.
 
-```
+```json
 {
 	"customer_name": "Ryan",
 	"reason": "Check engine light diagnosis",
 	"technician": 2,
-    "is_finished": true,
-    "is_vip": false,
+	"is_finished": true,
+	"is_vip": false
 }
 ```
 
 Sample return JSON response after updating individual appointment:
 
-```
+```json
 {
 	"vin": "6GJ94YOC5SQ2O5A87",
 	"customer_name": "Ryan",
@@ -209,7 +209,7 @@ Send _DELETE_ request to http://localhost:8080/api/appointments/id/ <br/>
 
 Sample return JSON response after succesfully deleting an appointment:<br/>
 
-```
+```json
 {
 	"vin": "14912939DKL9DSS2",
 	"customer_name": "Jane",
@@ -226,7 +226,7 @@ Sample return JSON response after succesfully deleting an appointment:<br/>
 
 Sample return JSON response after deleting an appointment that does not exist:<br/>
 
-```
+```json
 {
 	"message": "Does not exist"
 }
@@ -242,10 +242,10 @@ Send _GET_ request to http://localhost:8080/api/technicians/<br/>
 
 Sample return JSON response data: <br/>
 
-```
+```json
 {
-    technicians: [
-        {
+	"technicians": [
+		{
 			"id": 1,
 			"name": "RieRie",
 			"employee_number": 193428
@@ -254,8 +254,8 @@ Sample return JSON response data: <br/>
 			"id": 2,
 			"name": "Robert",
 			"employee_number": 391032
-		},
-    ]
+		}
+	]
 }
 ```
 
@@ -267,7 +267,7 @@ Send _POST_ request to http://localhost:8080/api/technicians/<br/>
 
 Sample JSON request object to create a technician:<br/>
 
-```
+```json
 {
 	"name": "Robert",
 	"employee_number": "391032"
@@ -276,7 +276,7 @@ Sample JSON request object to create a technician:<br/>
 
 Sample return JSON response after sending POST request:<br/>
 
-```
+```json
 {
 	"id": 2,
 	"name": "Robert",
@@ -292,7 +292,7 @@ Send _GET_ request to http://localhost:8080/api/technicians/id/<br/>
 
 Sample return JSON response for an individual technician:<br/>
 
-```
+```json
 {
 	"id": 2,
 	"name": "Robert",
@@ -310,10 +310,10 @@ Send _GET_ request to http://localhost:8080/api/automobiles/
 
 Sample return JSON response data:<br/>
 
-```
+```json
 {
-    "autos": [
-        {
+	"autos": [
+		{
 			"import_vin": "/api/automobiles/1C3CC5FB2AN120321/",
 			"color": "blue",
 			"year": 2010
@@ -323,7 +323,7 @@ Sample return JSON response data:<br/>
 			"color": "red",
 			"year": 2014
 		}
-    ]
+	]
 }
 ```
 
