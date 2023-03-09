@@ -13,8 +13,6 @@ const SearchAppointment = () => {
 		if (response.ok) {
 			const data = await response.json();
 			setAppointments(data.appointments);
-		} else {
-			console.error(response);
 		}
 	};
 
