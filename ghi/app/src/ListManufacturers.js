@@ -16,28 +16,55 @@ const ListManufacturers = () => {
 		}
 	};
 
+	const handleDelete = async (id) => {
+		console.log(id);
+		const url = `http://localhost:8100/api/manufacturers/${id}`;
+
+		const response = await fetch(url, { method: "DELETE" });
+
+		if (response.ok) {
+			mountManufacturer();
+		}
+	};
+
 	useEffect(() => {
 		mountManufacturer();
 	}, []);
 	return (
 		<div className="container">
-			<h1>Manufacturers</h1>
-			<table className="table table-striped">
-				<thead>
-					<tr>
-						<th>Name</th>
-					</tr>
-				</thead>
-				<tbody>
-					{manufacturers.map((manufacturer) => {
-						return (
-							<tr key={manufacturer.id}>
-								<td>{manufacturer.name}</td>
-							</tr>
-						);
-					})}
-				</tbody>
-			</table>
+			<div className="row">
+				<div className="col-md-12">
+					<h1 className="text-center">Manufacturers</h1>
+					<div className="card mx-auto">
+						<div className="card-body">
+							<table className="table table-striped">
+								<thead>
+									<tr>
+										<th>Name</th>
+									</tr>
+								</thead>
+								<tbody>
+									{manufacturers.map((manufacturer) => {
+										return (
+											<tr key={manufacturer.id}>
+												<td>{manufacturer.name}</td>
+												<td>
+													<button
+														className="btn btn-danger"
+														type="button"
+														onClick={() => handleDelete(manufacturer.id)}>
+														Delete
+													</button>
+												</td>
+											</tr>
+										);
+									})}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 };

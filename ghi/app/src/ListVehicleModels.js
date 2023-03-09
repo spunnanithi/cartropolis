@@ -14,40 +14,66 @@ const ListVehicleModels = () => {
 		}
 	};
 
+	const handleDelete = async (id) => {
+		const url = `http://localhost:8100/api/models/${id}/`;
+
+		const response = await fetch(url, { method: "DELETE" });
+
+		if (response.ok) {
+			mountVehicleModels();
+		}
+	};
+
 	useEffect(() => {
 		mountVehicleModels();
 	}, []);
 
 	return (
 		<div className="container">
-			<h1>Vehicle Models</h1>
-			<table className="table table-striped">
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Manufacturer</th>
-						<th>Picture</th>
-					</tr>
-				</thead>
-				<tbody>
-					{vehicleModels.map((vehicleModel) => {
-						return (
-							<tr key={vehicleModel.id}>
-								<td>{vehicleModel.name}</td>
-								<td>{vehicleModel.manufacturer.name}</td>
-								<td>
-									<img
-										style={{
-											height: "175px",
-											width: "350px",
-										}}
-										src={vehicleModel.picture_url}></img>
-								</td>
-							</tr>
-						);
-					})}
-				</tbody>
-			</table>
+			<div className="row">
+				<div className="col-md-12">
+					<h1 className="text-center">Vehicle Models</h1>
+					<div className="card mx-auto">
+						<div className="card-body">
+							<table className="table table-striped">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Manufacturer</th>
+										<th>Picture</th>
+									</tr>
+								</thead>
+								<tbody>
+									{vehicleModels.map((vehicleModel) => {
+										return (
+											<tr key={vehicleModel.id}>
+												<td>{vehicleModel.name}</td>
+												<td>{vehicleModel.manufacturer.name}</td>
+												<td>
+													<img
+														style={{
+															height: "175px",
+															width: "350px",
+														}}
+														src={vehicleModel.picture_url}></img>
+												</td>
+												<td>
+													<button
+														className="btn btn-danger"
+														type="button"
+														onClick={() => handleDelete(vehicleModel.id)}>
+														Delete
+													</button>
+												</td>
+											</tr>
+										);
+									})}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 };
