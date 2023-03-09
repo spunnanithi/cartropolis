@@ -31,7 +31,7 @@ The Service Appointment Form page allows the user to create a service appointmen
 
 #### Service Appointments List
 
-The Service Appointment List page features a table that will list out all of the appointments that are currently not finished or canceled. The user is able to see if each respective appointment is a VIP on the far-left side of the table. **_A yellow star indicates the customer is a VIP while a red 'X' indicates the customer is not a VIP._** Also, the user is able to click on the 'Finish' or 'Cancel' buttons to remove the appointment from the listing.
+The Service Appointment List page features a table that will list out all of the appointments that are currently not finished or canceled. The user is able to see if each respective customer/appointment/automobile is a VIP on the far-left side of the table. **_A yellow star indicates the customer is a VIP while a red 'X' indicates the customer is not a VIP._** Also, the user is able to click on the 'Finish' or 'Cancel' buttons to remove the appointment from the listing. The appointment will still be available in the database for the Appointment model but it will no longer get shown in the table.
 
 > Please refer to "AutomobileVO (Value Object)" in the Models section below for more VIP information.
 
@@ -39,17 +39,15 @@ The Service Appointment List page features a table that will list out all of the
 
 The Service Appointment History page features a search bar at the top of the page where the user can input a valid VIN to list out a history of appointment(s) for the related automobile. Only the associated automobile with the VIN will populate the table underneath the search bar.
 
-<br/>
-
 ### Back-End
 
 #### Models
 
-**Appointment (Entity)** - The Appointment model is considered an entity since it has a life cycle (canceled or finished) and its own unique identity. An appointment instance has its own unique properties such as VIN, customer name, date/time, reason for appointment and technician assigned to each appointment. Additionally, the Appointment model contains a property to keep track of the finished or canceled status of each appointment.
+**Appointment (Entity)** - The Appointment model is considered an entity since it has a life cycle (active, canceled or finished) and its own unique identity. An appointment instance has its own unique properties such as VIN, customer name, date/time, reason for appointment and technician assigned to each appointment instance. Additionally, the Appointment model contains a property to keep track of the finished or canceled status of each appointment instance.
 
 **Technician (Entity)** - The Technician model is considered an entity since it has its own unique identity. Two technicians both named "Ryan" are considered two different entities and can be identified using their employee number.
 
-**AutomobileVO (Value Object)** - The AutomobileVO model is considered a value object since automobile instances have no identity or life cycles. Additionally, the data within AutomobileVO model should not be updated or deleted in any way. The data stored within this model is used to determine if the customer is considered a VIP.
+**AutomobileVO (Value Object)** - The AutomobileVO model is considered a value object since AutomobileVO instances have no identity or life cycles. Additionally, the data within AutomobileVO model should not be updated or deleted in any way. The data stored within this model is used to determine if the customer is considered a VIP.
 
 > A customer is considered a VIP if the automobile VIN used while booking a service appointment matches the VIN from any automobile that is present in the Inventory microservice.
 
@@ -63,7 +61,7 @@ The Service microservice polls the Inventory microservice every 60 seconds to ob
 
 ### RESTful API CRUD Routes
 
-> The appropriate RESTful API HTTP endpoints, used to view, create, update and delete, are listed below that will interact with the Appointment, Technician and AutomobileVO models, accordingly.
+> The appropriate RESTful API HTTP endpoints, used to view, create, update and delete, are listed below that will interact with the Appointment, Technician and AutomobileVO models, accordingly. These endpoints can be accessed using Insomnia or Insomnia-equilvalent application.
 
 #### Appointments
 
