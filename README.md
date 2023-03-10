@@ -415,7 +415,7 @@ The Service Appointment History page features a search bar at the top of the pag
 
 #### Polling
 
-The Service microservice polls the Inventory microservice every 60 seconds to obtain Automobile model data and stores the data under the AutomobileVO model in the Service microservice.
+The Service microservice polls the Inventory microservice every 15 seconds to obtain Automobile model data and stores the data under the AutomobileVO model in the Service microservice.
 
 > A _GET_ HTTP request was made to http://inventory-api:8000/api/automobiles/ to poll for Automobile data from Inventory microservice.
 
