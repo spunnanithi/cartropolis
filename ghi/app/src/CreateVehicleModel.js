@@ -1,7 +1,10 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CreateVehicleModel = () => {
+	const navigate = useNavigate();
+
 	const [manufacturers, setManufacturers] = useState([]);
 	const [name, setName] = useState("");
 	const [pictureUrl, setPictureUrl] = useState("");
@@ -51,7 +54,7 @@ const CreateVehicleModel = () => {
 		const response = await fetch(vehicleModelUrl, fetchConfig);
 
 		if (response.ok) {
-			const newVehicleModel = await response.json();
+			navigate("/inventory", { replace: true });
 
 			setName("");
 			setPictureUrl("");

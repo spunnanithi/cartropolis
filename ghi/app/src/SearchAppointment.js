@@ -66,30 +66,23 @@ const SearchAppointment = () => {
 				</thead>
 				<tbody>
 					{filteredAppointments.map((appointment) => {
+						// Formatting Date
+						let formattedDate = appointment.date.substring(0, 10);
 						// Formatting Time
-						let formattedTime = appointment.time.substring(0, 5);
+						let formattedTime = appointment.time.substring(11, 16);
 						let isAmOrPm = "AM";
-						if (
-							formattedTime.slice(0, 2) > 12 &&
-							formattedTime.slice(0, 2) < 24
-						) {
-							isAmOrPm = "PM";
-							formattedTime =
-								formattedTime.substring(0, 2) -
-								12 +
-								formattedTime.substring(2, 5);
-						} else if (formattedTime.slice(0, 2) == 12) {
+
+						if (formattedTime.slice(0, 2) >= 12) {
 							isAmOrPm = "PM";
 						} else if (formattedTime.slice(0, 2) == 0) {
-							isAmOrPm = "AM";
-							formattedTime = 12 + formattedTime.substring(2, 5);
+							formattedTime = 12 + formattedTime.slice(2, 5);
 						}
 						if (appointment.vin === searchBar && buttonClick) {
 							return (
 								<tr key={appointment.id}>
 									<td>{appointment.vin}</td>
 									<td>{appointment.customer_name}</td>
-									<td>{appointment.date}</td>
+									<td>{formattedDate}</td>
 									<td>
 										{formattedTime} {isAmOrPm}
 									</td>

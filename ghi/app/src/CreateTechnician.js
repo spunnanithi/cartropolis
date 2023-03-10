@@ -12,7 +12,9 @@ const CreateTechnician = () => {
 		if (name === "name") {
 			setName(value);
 		} else if (name === "employee_number") {
-			setEmployeeNumber(value);
+			if (value.length < 7) {
+				setEmployeeNumber(value);
+			}
 		}
 	};
 
