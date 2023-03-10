@@ -17,7 +17,6 @@ const ListManufacturers = () => {
 	};
 
 	const handleDelete = async (id) => {
-		console.log(id);
 		const url = `http://localhost:8100/api/manufacturers/${id}`;
 
 		const response = await fetch(url, { method: "DELETE" });
