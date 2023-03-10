@@ -83,6 +83,7 @@ function SalesRecordForm() {
         setCustomer("");
         setSalesRep("");
         fetchAutomobiles();
+        fetchAutomobile();
     }
 };
 
