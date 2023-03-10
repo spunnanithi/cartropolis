@@ -750,6 +750,7 @@ http://localhost:8090/api/sale/<int:id>/ (for the sale details and to delete a s
 ### CUSTOMER INSOMNIA URLS:
 
 http://localhost:8090/api/customer/ for the customer list and to create a customer
+
 http://localhost:8090/api/customer/<int:id>/ for customer details
 
 _when testing using insomnia the (task) corresponds with the link used_

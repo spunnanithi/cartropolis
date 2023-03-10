@@ -51,7 +51,7 @@ function SalesRepHistory() {
             <option value="">Choose A Sales Representative</option>
             {salesReps.map(salesRep => {
               return (
-                <option value={salesRep.id} key={salesRep.id}>
+                <option value={salesRep.id} key={salesRep.employee_id}>
                   {salesRep.name}
                 </option>
               );
@@ -64,6 +64,7 @@ function SalesRepHistory() {
             <thead>
               <tr>
                 <th>Sales Representative</th>
+                <th>Employee ID</th>
                 <th>Customer</th>
                 <th> VIN </th>
                 <th>Price</th>
@@ -75,6 +76,7 @@ function SalesRepHistory() {
                 return (
                   <tr key={sale.id}>
                     <td>{sale.sales_rep.name}</td>
+                    <td>{sale.sales_rep.employee_id}</td>
                     <td>{sale.customer.name}</td>
                     <td>{sale.automobile.vin}</td>
                     <td>{sale.price}</td>
