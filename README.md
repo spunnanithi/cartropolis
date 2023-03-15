@@ -27,8 +27,6 @@ docker-compose up
 7. Once you have completed those steps you will be able to render the webpage using
    http://localhost:3000/ with 3000 being the port used.
 
----
-
 ## Design
 
 <img src="project-beta-diagram.png" width="1000" height="500">
@@ -38,8 +36,6 @@ docker-compose up
   - Front-end: our group decided to utilize the React library to create a fast and responsive webpage to enhance user experience. The user is able to interact with the webpage at http://localhost:3000/.
   - Back-end: our group decided to utilize the Django framework to set up RESTful APIs for each microservice. RESTful API requests can be made to the appropriate URLs to obtain necessary data from each microservice.
   - Docker: a `docker-compose.yml` is provided so it would be easy to build and run Docker containers with necessary dependencies for the whole application.
-
----
 
 ## Inventory Microservice
 
@@ -371,8 +367,6 @@ and example below of what you will see.
 }
 ```
 
----
-
 ## Service Microservice
 
 ### Front-End
@@ -690,8 +684,6 @@ Sample return JSON response data:<br/>
 	]
 }
 ```
-
----
 
 ## Sales microservice
 
