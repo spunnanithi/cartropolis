@@ -1,9 +1,9 @@
 # Cartropolis
 
-<img src="./ghi/app/images/main-page.png" width="1000" height="500">
-<img src="./ghi/app/images/inventory-page.png" width="1000" height="500">
-<img src="./ghi/app/images/service-page.png" width="1000" height="500">
-<img src="./ghi/app/images/sales-page.png" width="1000" height="500">
+<img src="./ghi/app/images/main-page.png" width="1000" height="550">
+<img src="./ghi/app/images/inventory-page.png" width="1000" height="550">
+<img src="./ghi/app/images/service-page.png" width="1000" height="550">
+<img src="./ghi/app/images/sales-page.png" width="1000" height="550">
 
 ## Contributors
 
@@ -36,7 +36,7 @@ docker-compose up
 
 ## Design
 
-<img src="./ghi/app/images/project-beta-diagram.png" width="1000" height="500">
+<img src="./ghi/app/images/project-beta-diagram.png" width="1000" height="550">
 
 - For this project, our group decided to split the application up into three microservices: Service microservice, Sales microservice and Inventory microservice. Each microservice will _"own"_ a particular set of data for which other microservices may poll to utilize as value objects within each respective microservice.
 
