@@ -7,7 +7,7 @@ const InventoryPage = () => {
 			<h1>Inventory</h1>
 			<img
 				src="https://images.unsplash.com/photo-1574023278981-0b48ba10e9ba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-				style={{ width: "1000px", height: "650px" }}></img>
+				style={{ width: "800px", height: "450px" }}></img>
 			<div className="container">
 				<div className="row mt-4">
 					<p>
