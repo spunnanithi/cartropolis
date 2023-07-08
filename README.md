@@ -12,6 +12,28 @@
 - **Daniel Mitchell** - Sales Microservice
 - **Sirasit Punnanithi** - Service Microservice
 
+## Technologies Used
+
+### Front end:
+
+- React.js
+  - JSX (JavaScript/HTML)
+- Bootstrap
+  - CSS
+
+### Back end:
+
+- Django
+  - Python
+- PostgreSQL
+
+### Misc:
+
+- Microservices
+- Domain-driven design
+- REST APIs
+- Docker
+
 ## Getting Started
 
 This is the link to the repo where you will first need to go in order to fork and clone this project.
@@ -32,7 +54,7 @@ docker-compose up
 ```
 
 7. Once you have completed those steps you will be able to render the webpage using
-   http://localhost:3000/ with 3000 being the port used.
+   http://localhost:3000/.
 
 ## Design
 
